@@ -117,9 +117,9 @@ class Application(tk.Frame):
         frame3B = tk.Label(self.frame3,text="Blue")
         frame3B.grid(row=5,column=0, sticky=tk.N+tk.S+tk.E+tk.W,padx=5,pady=5)
 
-        gim = tk.PhotoImage(file='m16_smallest_None.png')
-        rim = tk.PhotoImage(file='m16_smallest_None.png')
-        iim = tk.PhotoImage(file='m16_smallest_None.png')
+        gim = tk.PhotoImage(file='m16_smallest_None.pgm')
+        rim = tk.PhotoImage(file='m16_smallest_None.pgm')
+        iim = tk.PhotoImage(file='m16_smallest_None.pgm')
 
         buttong=tk.Label(self.frame3,image=gim)
         buttong.img = gim
@@ -150,7 +150,7 @@ class Application(tk.Frame):
         self.frame4 = tk.LabelFrame(self, text="Result")
         self.frame4.grid(row=1,column=1, sticky=tk.N+tk.S+tk.E+tk.W,padx=5,pady=5)
         #tk.Label(frame4, text="result").grid(row=0,column=0)
-        rgbbig = tk.PhotoImage(file="m16_smaller_None.png")
+        rgbbig = tk.PhotoImage(file="m16_smaller_None.pgm")
         self.buttonrgbbig = tk.Label(self.frame4, image=rgbbig)
         self.buttonrgbbig.img = rgbbig
         self.buttonrgbbig.grid(column=0,row=0)
@@ -197,12 +197,12 @@ class Application(tk.Frame):
         buttonb.grid(column=0,row=5)
         
     def setFileNames(self):
-        self.Rthumb = self.Imagevar.get() +"_smallest_"+self.Rvar.get()+".png" 
-        self.Gthumb = self.Imagevar.get() +"_smallest_"+self.Gvar.get()+".png" 
-        self.Bthumb = self.Imagevar.get() +"_smallest_"+self.Bvar.get()+".png" 
-        self.Rbig = self.Imagevar.get() +"_smaller_"+self.Rvar.get()+".png" 
-        self.Gbig = self.Imagevar.get() +"_smaller_"+self.Gvar.get()+".png" 
-        self.Bbig = self.Imagevar.get() +"_smaller_"+self.Bvar.get()+".png"  
+        self.Rthumb = self.Imagevar.get() +"_smallest_"+self.Rvar.get()+".pgm" 
+        self.Gthumb = self.Imagevar.get() +"_smallest_"+self.Gvar.get()+".pgm" 
+        self.Bthumb = self.Imagevar.get() +"_smallest_"+self.Bvar.get()+".pgm" 
+        self.Rbig = self.Imagevar.get() +"_smaller_"+self.Rvar.get()+".pgm" 
+        self.Gbig = self.Imagevar.get() +"_smaller_"+self.Gvar.get()+".pgm" 
+        self.Bbig = self.Imagevar.get() +"_smaller_"+self.Bvar.get()+".pgm"  
         print "R files ",self.Rthumb,self.Rbig
         print "G files ",self.Gthumb,self.Gbig
         print "B files ",self.Bthumb,self.Bbig
@@ -222,7 +222,7 @@ class Application(tk.Frame):
         print self.arrB
 
     def redraw(self):
-        print "redraws stuff"
+        #print "redraws stuff"
         arrR2=self.arrR*float(self.r)
         arrG2=self.arrG*float(self.g)
         arrB2=self.arrB*float(self.b)
