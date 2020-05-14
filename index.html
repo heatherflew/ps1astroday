@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        Pan-STARRS Image Colorizer
+    </title>
+  <style>
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 17px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 17px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+table, th, td {
+  border: 1px solid black;
+}
+
+      .flex-container {
+        display: flex;
+        align-items: center; /* Use another value to see the result */
+        width: 100%;
+      }
+      .flex-container > div {
+        width: 25%;
+}
+
+</style>
+</head>
+<body>
+
+<table style="width:100%">
+  <tr>
+    <th style="text-align:left;vertical-align:top;padding:0"> Step 1: Select a set of images
+      <p>
+	<input type="radio" name="image" id="img1" value="m16" />
+	<label>M16</label>
+	<input type="radio" name="image" id="img2" value="horse" />
+	<label>Horsehead</label>
+	<input type="radio" name="image" id="img3" value="m17" />
+	<label>M17</label>
+	<br>
+	<input type="radio" name="image" id="img4" value="m19" />
+	<label>M19</label>
+	<input type="radio" name="image" id="img5" value="m20" />
+	<label>M20</label>
+      <input type="radio" name="image" id="img6" value="m21" />
+      <label>M21</label>
+    </th>
+    <th  style="text-align:left;vertical-align:top;padding:0">
+      Step 2: Select a filter (grizy) for each channel (RGB)
+      <p>
+	<div class="flex-container">
+	  <div style="flex-basis:20%;text-align:right">
+	    Red (R) =
+	    <br>
+	    Green (G) =
+	    <br>
+	    Blue (B) =
+	  </div>
+	  <div style="flex-basis:80%" >
+	<input type="radio" name="Rfilt" id="Rg" value="g" />
+	<label>g</label>
+	<input type="radio" name="Rfilt" id="Rr" value="r" />
+	<label>r</label>
+	<input type="radio" name="Rfilt" id="Ri" value="i" />
+	<label>i</label>
+	<input type="radio" name="Rfilt" id="Rz" value="z" />
+	<label>z</label>
+	<input type="radio" name="Rfilt" id="Ry" value="y" />
+	<label>y</label>
+	<input type="radio" name="Rfilt" id="Rnone" value="None" checked/>
+	<label>none</label>
+      <br>
+	<input type="radio" name="Gfilt" id="Gg" value="g" />
+	<label>g</label>
+	<input type="radio" name="Gfilt" id="Gr" value="r" />
+	<label>r</label>
+	<input type="radio" name="Gfilt" id="Gi" value="i" />
+	<label>i</label>
+	<input type="radio" name="Gfilt" id="Gz" value="z" />
+	<label>z</label>
+	<input type="radio" name="Gfilt" id="Gy" value="y" />
+	<label>y</label>
+	<input type="radio" name="Gfilt" id="Gnone" value="None" checked/>
+	<label>none</label>
+      <br>
+	<input type="radio" name="Bfilt" id="Bg" value="g" />
+	<label>g</label>
+	<input type="radio" name="Bfilt" id="Br" value="r" />
+	<label>r</label>
+	<input type="radio" name="Bfilt" id="Bi" value="i" />
+	<label>i</label>
+	<input type="radio" name="Bfilt" id="Bz" value="z" />
+	<label>z</label>
+	<input type="radio" name="Bfilt" id="By" value="y" />
+	<label>y</label>
+	<input type="radio" name="Bfilt" id="Bnone" value="None" checked/>
+	<label>none</label>
+	  </div>
+	  </div>
+	
+
+    </th>
+  </tr>
+  <tr>
+    <th style="text-align:left;vertical-align:top;padding:0">
+      Step 3: Adjust the amount of Red, Green, and Blue 
+      <p>
+	<div id="imageHolder"></div>
+	<div class="flex-container">
+      <div class="slidecontainer">
+	<input type="range" min="1" max="100" value="50" class="slider" id="sliderR">
+	<p>R Value: <span id="valR"></span></p>
+      </div>
+      <canvas id="CanvasRfilter" width="150" height="150" style="border:1px solid #d3d3d3;">
+	Your browser does not support the HTML5 canvas tag.
+      </canvas>
+	</div>
+		<div class="flex-container">
+      <div class="slidecontainer">
+	<input type="range" min="1" max="100" value="50" class="slider" id="sliderG">
+	<p>G Value: <span id="valG"></span></p>
+      </div>
+      <canvas id="CanvasGfilter" width="150" height="150" style="border:1px solid #d3d3d3;">
+	Your browser does not support the HTML5 canvas tag.
+      </canvas>
+
+		</div>
+      	<div class="flex-container">
+      <div class="slidecontainer">
+	<input type="range" min="1" max="100" value="50" class="slider" id="sliderB">
+	<p>B Value: <span id="valB"></span></p>
+      </div>
+            <canvas id="CanvasBfilter" width="150" height="150" style="border:1px solid #d3d3d3;">
+	Your browser does not support the HTML5 canvas tag.
+      </canvas>
+
+            </div>
+    </th>
+    <th style="text-align:left;vertical-align:top;padding:0" >Combined Color image
+      <br>
+      
+      <canvas id="CanvasBig" width="500" height="500" style="border:1px solid #d3d3d3;">
+	Your browser does not support the HTML5 canvas tag.
+      </canvas>
+      
+      
+    </th>
+  </tr>
+  </table>
+<span id="DebugOutput"></span></p>
+<script>
+  var psimage = {
+  imageName : "None",
+  sliderValR : 50,
+  sliderValG : 50,
+  sliderValB : 50,
+  filterR : "none",
+  filterG : "none",
+  filterB : "none"
+  };
+  
+  psimage.sliderValR = document.getElementById("sliderR");
+  psimage.sliderValG = document.getElementById("sliderG");
+  psimage.sliderValB = document.getElementById("sliderB");
+  var outputR = document.getElementById("valR");
+  var outputG = document.getElementById("valG");
+  var outputB = document.getElementById("valB");
+  var valRg = document.getElementById("Rg");
+  var valRr = document.getElementById("Rr");
+  var valRi = document.getElementById("Ri");
+  var valRz = document.getElementById("Rz");
+  var valRy = document.getElementById("Ry");
+  var valRnone = document.getElementById("Rnone");
+  var valGg = document.getElementById("Gg");
+  var valGr = document.getElementById("Gr");
+  var valGi = document.getElementById("Gi");
+  var valGz = document.getElementById("Gz");
+  var valGy = document.getElementById("Gy");
+  var valGnone = document.getElementById("Gnone");
+  var valBg = document.getElementById("Bg");
+  var valBr = document.getElementById("Br");
+  var valBi = document.getElementById("Bi");
+  var valBz = document.getElementById("Bz");
+  var valBy = document.getElementById("By");
+  var valBnone = document.getElementById("Bnone");
+  var im1 = document.getElementById("img1");
+  var im2 = document.getElementById("img2");
+  var im3 = document.getElementById("img3");
+  var im4 = document.getElementById("img4");
+  var im5 = document.getElementById("img5");
+  var im6 = document.getElementById("img6");
+//  var im = document.getElementsByClassName("image");
+  // Display the default values:
+  outputR.innerHTML = psimage.sliderValR.value;
+  outputB.innerHTML = psimage.sliderValB.value;
+  outputG.innerHTML = psimage.sliderValG.value;
+
+  // Get the slider values when they are adjusted
+  
+  psimage.sliderValR.oninput = function() {
+  outputR.innerHTML = this.value;
+  printDebugStuff();
+  }
+
+  psimage.sliderValG.oninput = function() {
+  outputG.innerHTML = this.value;
+  printDebugStuff();
+  }
+
+  psimage.sliderValB.oninput = function() {
+  outputB.innerHTML = this.value;
+  printDebugStuff();
+  }
+
+  valRg.oninput = function() {
+  psimage.filterR= "g";
+  printDebugStuff();
+  }
+  valRr.oninput = function() {
+  psimage.filterR= "r";
+  printDebugStuff();
+  }
+  valRi.oninput = function() {
+  psimage.filterR= "i";
+  printDebugStuff();
+  }
+  valRz.oninput = function() {
+  psimage.filterR= "z";
+  printDebugStuff();
+  }
+  valRy.oninput = function() {
+  psimage.filterR= "y";
+  printDebugStuff();
+  }
+  valRnone.oninput = function() {
+  psimage.filterR= "None";
+  printDebugStuff();
+  }
+
+    valBg.oninput = function() {
+  psimage.filterB= "g";
+  printDebugStuff();
+  }
+  valBr.oninput = function() {
+  psimage.filterB= "r";
+  printDebugStuff();
+  }
+  valBi.oninput = function() {
+  psimage.filterB= "i";
+  printDebugStuff();
+  }
+  valBz.oninput = function() {
+  psimage.filterB= "z";
+  printDebugStuff();
+  }
+  valBy.oninput = function() {
+  psimage.filterB= "y";
+  printDebugStuff();
+  }
+  valBnone.oninput = function() {
+  psimage.filterB= "None";
+  printDebugStuff();
+  }
+
+  valGg.oninput = function() {
+  psimage.filterG= "g";
+  printDebugStuff();
+  }
+  valGr.oninput = function() {
+  psimage.filterG= "r";
+  printDebugStuff();
+  }
+  valGi.oninput = function() {
+  psimage.filterG= "i";
+  printDebugStuff();
+  }
+  valGz.oninput = function() {
+  psimage.filterG= "z";
+  printDebugStuff();
+  }
+  valGy.oninput = function() {
+  psimage.filterG= "y";
+  printDebugStuff();
+  }
+  valGnone.oninput = function() {
+  psimage.filterG= "None";
+  printDebugStuff();
+  }
+  
+  im1.onclick = function() {
+  psimage.imageName= this.value;
+  printDebugStuff();
+  }
+    im2.onclick = function() {
+  psimage.imageName= this.value;
+  printDebugStuff();
+  }
+    im3.onclick = function() {
+  psimage.imageName= this.value;
+  printDebugStuff();
+  }
+    im4.onclick = function() {
+  psimage.imageName= this.value;
+  printDebugStuff();
+  }
+    im5.onclick = function() {
+  psimage.imageName= this.value;
+  printDebugStuff();
+  }
+    im6.onclick = function() {
+  psimage.imageName= this.value;
+  printDebugStuff();
+  }
+  
+  
+  var x = document.getElementById('imageHolder')
+  x.setAttribute("src","m20_smaller_g.png")
+
+  var ctxR = document.getElementById("CanvasRfilter").getContext("2d");
+  var Rimg = new Image();
+  Rimg.src="none_smallest_None.png";
+  Rimg.onload = function() {
+  ctxR.drawImage(Rimg,0,0,150,150);
+  };
+    var ctxG = document.getElementById("CanvasGfilter").getContext("2d");
+  var Gimg = new Image();
+  Gimg.src="none_smallest_None.png";
+  Gimg.onload = function() {
+  ctxG.drawImage(Gimg,0,0,150,150);
+  };
+  var ctxB = document.getElementById("CanvasBfilter").getContext("2d");
+  var Bimg = new Image();
+  Bimg.src="none_smallest_None.png";
+  Bimg.onload = function() {
+  ctxB.drawImage(Bimg,0,0,150,150);
+  };
+
+  var ctxBig = document.getElementById("CanvasBig").getContext("2d");
+  var BigImg = new Image();
+  BigImg.src="none_smaller_None.png";
+  BigImg.onload = function() {
+  ctxBig.drawImage(BigImg,0,0,500,500);
+  };
+  
+ 
+  function printDebugStuff() {
+  document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName;
+
+  BigImg.src="https://github.com/heatherflew/ps1astroday/blob/master/"+psimage.imageName+"_smaller_g.png";
+  ctxBig.drawImage(BigImg,0,0,500,500);
+  
+  Rimg.src="https://github.com/heatherflew/ps1astroday/blob/master/"+psimage.imageName+"_smallest_"+psimage.filterR+".png";
+  ctxR.drawImage(Rimg,0,0,150,150);
+  Gimg.src="https://github.com/heatherflew/ps1astroday/blob/master/"+psimage.imageName+"_smallest_"+psimage.filterG+".png";
+  ctxG.drawImage(Gimg,0,0,150,150);
+
+  var w= Rimg.width;
+  var h= Rimg.height;
+  var RimgData = ctxR.getImageData(0,0,w,h);
+ //   var i;
+ //   for (i=0; i< Rimg.data.length; i+=4) {
+//	       Rimg.data[i+1]=0;
+//	       Rimg.data[i+2]=0;
+//	       }
+//   ctxR.putImageData(RimgData,0,0);	       
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+  ctxB.drawImage(Bimg,0,0,150,150);
+	       
+ document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName + " W: "+ w;
+
+  }
+  
+</script>
+
+</body>
+</html>
