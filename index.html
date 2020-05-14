@@ -387,7 +387,7 @@ table, th, td {
 
   var w= Rimg.width;
   var h= Rimg.height;
-  var RimgData = ctxR.getImageData(0,0,w,h);
+  var RimgData = ctxR.getImageData(0,0,150,150);
   var i;
   for (i=0; i< Rimg.data.length; i+=4) {
 	  Rimg.data[i+1]=0;
