@@ -342,23 +342,20 @@ table, th, td {
   psimage.imageName= this.value;
   printDebugStuff();
   }
-  
-  
-  var x = document.getElementById('imageHolder')
-  x.setAttribute("src","m20_smaller_g.png")
 
   var ctxR = document.getElementById("CanvasRfilter").getContext("2d");
   var Rimg = new Image();
-  Rimg.src="none_smallest_None.png";
   Rimg.onload = function() {
+  Rimg.src="none_smallest_None.png";
   ctxR.drawImage(Rimg,0,0,150,150);
-  };
-    var ctxG = document.getElementById("CanvasGfilter").getContext("2d");
+  }
+  
+  var ctxG = document.getElementById("CanvasGfilter").getContext("2d");
   var Gimg = new Image();
   Gimg.src="none_smallest_None.png";
   Gimg.onload = function() {
   ctxG.drawImage(Gimg,0,0,150,150);
-  };
+  }
   var ctxB = document.getElementById("CanvasBfilter").getContext("2d");
   var Bimg = new Image();
   Bimg.src="none_smallest_None.png";
@@ -389,14 +386,17 @@ table, th, td {
   var h= Rimg.height;
   var RimgData = ctxR.getImageData(0,0,150,150);
   var i;
-  for (i=0; i< RimgData.data.length; i+=4) {
-	  RimgData.data[i]=(psimage.sliderValR.value-50)/100*RimgData.data[i]     
-	  RimgData.data[i+1]=0;
-	  RimgData.data[i+2]=0;
-  }
-	       ctxR.putImageData(RimgData,0,0);
-	    
-  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+  for (i=0; i< RimgData.data.length; i+=4){
+RimgData.data[i]=(psimage.sliderValR.value-50)/100*RimgData.data[i];	       
+	       RimgData.data[i+1]=0;
+	       RimgData.data[i+2]=0;
+	       }
+ctxR.putImageData(RimgData,0,0);
+
+	       
+	       Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+
+	       
   ctxB.drawImage(Bimg,0,0,150,150);
 	       
  document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName + " RimageData.length: "+ RimgData.data.length;
