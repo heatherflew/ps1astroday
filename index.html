@@ -407,13 +407,13 @@ table, th, td {
 		 ctxB.putImageData(BimgData,0,0);
 
 		 
-		 var RimgDataCopy=new ImageData(
-		 new Uint8ClampedArray(RimgData.data),
-		 RimgData.width,
-		 RimgData.height);
+//		 var RimgDataCopy=new ImageData(
+//		 new Uint8ClampedArray(RimgData.data),
+//		 RimgData.width,
+//		 RimgData.height);
 
-		 changeColors(RimgDataCopy.data,psimage.sliderValR.value,0,0);
-		 ctxR.putImageData(RimgDataCopy,0,0);
+//		 changeColors(RimgDataCopy.data,psimage.sliderValR.value,0,0);
+//		 ctxR.putImageData(RimgDataCopy,0,0);
 
 
 
@@ -423,7 +423,7 @@ table, th, td {
 	       
 //  ctxB.drawImage(Bimg,0,0,150,150);
 	       
- document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName + " RimageData.length: "+ RimgData.data.length + "8:48";
+ document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName + " RimageData.length: "+ RimgData.data.length + "9:00";
 
   }
   
