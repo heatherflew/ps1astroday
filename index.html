@@ -345,8 +345,8 @@ table, th, td {
 
   var ctxR = document.getElementById("CanvasRfilter").getContext("2d");
   var Rimg = new Image();
-  Rimg.onload = function() {
   Rimg.src="none_smallest_None.png";
+  Rimg.onload = function() {
   ctxR.drawImage(Rimg,0,0,150,150);
   }
   
@@ -378,7 +378,7 @@ table, th, td {
   ctxBig.drawImage(BigImg,0,0,500,500);
   
   Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-  ctxR.drawImage(Rimg,0,0,150,150);
+//  ctxR.drawImage(Rimg,0,0,150,150);
   Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
   ctxG.drawImage(Gimg,0,0,150,150);
 
