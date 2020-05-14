@@ -369,7 +369,16 @@ table, th, td {
   BigImg.onload = function() {
   ctxBig.drawImage(BigImg,0,0,500,500);
   };
-  
+
+
+  function changeColors(data,R,G,B) {
+  for (var i = 0; i < data.length; i+=4) {
+		      data[i]=data[i]*(R/100);
+		      data[i+1]=data[i+1]*(R/100);
+		      data[i+2]=data[i+2]*(R/100);
+		      
+		      }
+  }
  
   function printDebugStuff() {
   document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName;
@@ -378,20 +387,21 @@ table, th, td {
   ctxBig.drawImage(BigImg,0,0,500,500);
   
   Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-//  ctxR.drawImage(Rimg,0,0,150,150);
+  ctxR.drawImage(Rimg,0,0,150,150);
   Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
   ctxG.drawImage(Gimg,0,0,150,150);
 
   var w= Rimg.width;
   var h= Rimg.height;
   var RimgData = ctxR.getImageData(0,0,150,150);
-  var i;
-  for (i=0; i< RimgData.data.length; i+=4){
-RimgData.data[i]=(psimage.sliderValR.value-50)/100*RimgData.data[i];	       
-	       RimgData.data[i+1]=0;
-	       RimgData.data[i+2]=0;
-	       }
-ctxR.putImageData(RimgData,0,0);
+//  var i;
+//  for (i=0; i< RimgData.data.length; i+=4){
+//RimgData.data[i]=(psimage.sliderValR.value-50)/100*RimgData.data[i];	       ///
+//	       RimgData.data[i+1]=0;
+//	       RimgData.data[i+2]=0;
+//	       }
+changeColors(RimgData.data,50,0,0);
+		 ctxR.putImageData(RimgData,0,0);
 
 	       
 	       Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
