@@ -362,6 +362,7 @@ table, th, td {
   Bimg.onload = function() {
   ctxB.drawImage(Bimg,0,0,150,150);
   };
+  var BimgData = ctxB.getImageData(0,0,150,150);  
 
   var ctxBig = document.getElementById("CanvasBig").getContext("2d");
   var BigImg = new Image();
