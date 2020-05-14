@@ -388,12 +388,12 @@ table, th, td {
   var w= Rimg.width;
   var h= Rimg.height;
   var RimgData = ctxR.getImageData(0,0,w,h);
- //   var i;
- //   for (i=0; i< Rimg.data.length; i+=4) {
-//	       Rimg.data[i+1]=0;
-//	       Rimg.data[i+2]=0;
-//	       }
-//   ctxR.putImageData(RimgData,0,0);	       
+  var i;
+  for (i=0; i< Rimg.data.length; i+=4) {
+	  Rimg.data[i+1]=0;
+	  Rimg.data[i+2]=0;
+  }
+  ctxR.putImageData(RimgData,0,0);	       
   Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
   ctxB.drawImage(Bimg,0,0,150,150);
 	       
