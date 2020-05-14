@@ -358,7 +358,7 @@ table, th, td {
   }
   var ctxB = document.getElementById("CanvasBfilter").getContext("2d");
   var Bimg = new Image();
-  Bimg.src="none_smallest_None.png";
+  Bimg.src="m17_smallest_g.png";
   Bimg.onload = function() {
   ctxB.drawImage(Bimg,0,0,150,150);
   };
@@ -401,17 +401,21 @@ table, th, td {
 //	       RimgData.data[i+2]=0;
 //	       }
 		 var RimgDataCopy=new ImageData(
-		 new Uint8ClampedArray.from(RimgData.data),
+		 new Uint8ClampedArray(RimgData.data),
 		 RimgData.width,
 		 RimgData.height);
 		 changeColors(RimgDataCopy.data,psimage.sliderValR.value,0,0);
 		 ctxR.putImageData(RimgDataCopy,0,0);
 
-	       
-	       Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+		 //saving this here so I can see how it works
+		 changeColors(BimgDataCopy.data,0,0,psimage.sliderValB.value,);
+		 ctxR.putImageData(BimgDataCopy,0,0);
 
 	       
-  ctxB.drawImage(Bimg,0,0,150,150);
+//	       Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+
+	       
+//  ctxB.drawImage(Bimg,0,0,150,150);
 	       
  document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName + " RimageData.length: "+ RimgData.data.length + "8:48";
 
