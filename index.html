@@ -377,17 +377,17 @@ table, th, td {
   function printDebugStuff() {
   document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName;
 
-  BigImg.src="https://github.com/heatherflew/ps1astroday/blob/master/"+psimage.imageName+"_smaller_g.png";
+  BigImg.src=psimage.imageName+"_smaller_g.png";
   ctxBig.drawImage(BigImg,0,0,500,500);
   
-  Rimg.src="https://github.com/heatherflew/ps1astroday/blob/master/"+psimage.imageName+"_smallest_"+psimage.filterR+".png";
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
   ctxR.drawImage(Rimg,0,0,150,150);
-  Gimg.src="https://github.com/heatherflew/ps1astroday/blob/master/"+psimage.imageName+"_smallest_"+psimage.filterG+".png";
+  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
   ctxG.drawImage(Gimg,0,0,150,150);
 
   var w= Rimg.width;
   var h= Rimg.height;
-  var RimgData = ctxR.getImageData(0,0,w,h);
+ // var RimgData = ctxR.getImageData(0,0,w,h);
  //   var i;
  //   for (i=0; i< Rimg.data.length; i+=4) {
 //	       Rimg.data[i+1]=0;
