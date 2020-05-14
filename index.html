@@ -390,14 +390,16 @@ table, th, td {
   var RimgData = ctxR.getImageData(0,0,150,150);
   var i;
   for (i=0; i< RimgData.length; i+=4) {
+	  RimgData[i]=(psimage.sliderValR.value-50)/100*RimgData[i]     
 	  RimgData[i+1]=0;
 	  RimgData[i+2]=0;
   }
-  ctxR.putImageData(RimgData,0,0);	       
+	       ctxR.putImageData(RimgData,0,0);
+	    
   Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
   ctxB.drawImage(Bimg,0,0,150,150);
 	       
- document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName + " W: "+ w;
+ document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName + " RimageData.length: "+ RimageData.length;
 
   }
   
