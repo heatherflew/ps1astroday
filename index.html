@@ -345,7 +345,7 @@ table, th, td {
 
   var ctxR = document.getElementById("CanvasRfilter").getContext("2d");
   var Rimg = new Image();
-  Rimg.src="none_smallest_None.png";
+  Rimg.src="m17_smallest_g.png";
   Rimg.onload = function() {
   ctxR.drawImage(Rimg,0,0,150,150);
   }
@@ -386,8 +386,8 @@ table, th, td {
   BigImg.src=psimage.imageName+"_smaller_g.png";
   ctxBig.drawImage(BigImg,0,0,500,500);
   
-  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-  ctxR.drawImage(Rimg,0,0,150,150);
+//  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+//  ctxR.drawImage(Rimg,0,0,150,150);
   Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
   ctxG.drawImage(Gimg,0,0,150,150);
 
@@ -409,7 +409,7 @@ ctxR.putImageData(RimgData,0,0);
 	       
   ctxB.drawImage(Bimg,0,0,150,150);
 	       
- document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName + " RimageData.length: "+ RimgData.data.length + "8:22";
+ document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName + " RimageData.length: "+ RimgData.data.length + "8:26";
 
   }
   
