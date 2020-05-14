@@ -389,9 +389,9 @@ table, th, td {
   var h= Rimg.height;
   var RimgData = ctxR.getImageData(0,0,150,150);
   var i;
-  for (i=0; i< Rimg.data.length; i+=4) {
-	  Rimg.data[i+1]=0;
-	  Rimg.data[i+2]=0;
+  for (i=0; i< RimgData.length; i+=4) {
+	  RimgData[i+1]=0;
+	  RimgData[i+2]=0;
   }
   ctxR.putImageData(RimgData,0,0);	       
   Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
