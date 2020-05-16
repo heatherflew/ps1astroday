@@ -243,135 +243,223 @@ table, th, td {
   printDebugStuff();
   }
 
-  valRg.oninput = function() {
+  valRg.onclick = function() {
   psimage.filterR= "g";
+  psimage.filterR= this.value;
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+  BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
   printDebugStuff();
   }
   valRr.oninput = function() {
   psimage.filterR= "r";
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+      BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
   printDebugStuff();
   }
   valRi.oninput = function() {
   psimage.filterR= "i";
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+      BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
   printDebugStuff();
   }
   valRz.oninput = function() {
   psimage.filterR= "z";
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+      BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
   printDebugStuff();
   }
   valRy.oninput = function() {
   psimage.filterR= "y";
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+      BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
   printDebugStuff();
   }
   valRnone.oninput = function() {
   psimage.filterR= "None";
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+    BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
   printDebugStuff();
   }
 
     valBg.oninput = function() {
   psimage.filterB= "g";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+    BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
   printDebugStuff();
   }
   valBr.oninput = function() {
   psimage.filterB= "r";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+    BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
   printDebugStuff();
   }
   valBi.oninput = function() {
   psimage.filterB= "i";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+    BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
   printDebugStuff();
   }
   valBz.oninput = function() {
   psimage.filterB= "z";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+    BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
   printDebugStuff();
   }
   valBy.oninput = function() {
   psimage.filterB= "y";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
   printDebugStuff();
   }
   valBnone.oninput = function() {
   psimage.filterB= "None";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
   printDebugStuff();
   }
 
   valGg.oninput = function() {
   psimage.filterG= "g";
+  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
+  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
   printDebugStuff();
+  		      ctxBig.putImageData(BigData,0,0);
+		      ctxB.putImageData(BimgData,0,0);		      
+		      ctxR.putImageData(RimgData,0,0);
+		      ctxG.putImageData(GimgData,0,0);
+
   }
   valGr.oninput = function() {
   psimage.filterG= "r";
+  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
+  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
   printDebugStuff();
   }
   valGi.oninput = function() {
   psimage.filterG= "i";
+  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
+  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
   printDebugStuff();
   }
   valGz.oninput = function() {
   psimage.filterG= "z";
+  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
+BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
   printDebugStuff();
   }
   valGy.oninput = function() {
   psimage.filterG= "y";
+  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
+  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
   printDebugStuff();
   }
   valGnone.oninput = function() {
   psimage.filterG= "None";
+  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
+  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
   printDebugStuff();
   }
   
   im1.onclick = function() {
   psimage.imageName= this.value;
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+  BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
+  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
+  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";  
+
   printDebugStuff();
   }
-    im2.onclick = function() {
+  im2.onclick = function() {
   psimage.imageName= this.value;
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+    BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
+  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
+  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";  
   printDebugStuff();
   }
     im3.onclick = function() {
   psimage.imageName= this.value;
+    Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+    BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
+  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
+  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";  
   printDebugStuff();
   }
     im4.onclick = function() {
   psimage.imageName= this.value;
+    Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+    BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
+  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
+  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";  
   printDebugStuff();
   }
     im5.onclick = function() {
   psimage.imageName= this.value;
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+    BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
+  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
+  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";  
   printDebugStuff();
   }
     im6.onclick = function() {
   psimage.imageName= this.value;
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+  BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
+  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
+  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";  
   printDebugStuff();
   }
 
   var ctxR = document.getElementById("CanvasRfilter").getContext("2d");
   var Rimg = new Image();
-  Rimg.src="m17_smallest_g.png";
+  Rimg.src="none_smallest_None.png";
   Rimg.onload = function() {
   ctxR.drawImage(Rimg,0,0,150,150);
   }
-  var RimgData = ctxR.getImageData(0,0,150,150);  
+
   var ctxG = document.getElementById("CanvasGfilter").getContext("2d");
   var Gimg = new Image();
   Gimg.src="none_smallest_None.png";
   Gimg.onload = function() {
   ctxG.drawImage(Gimg,0,0,150,150);
+
   }
   var ctxB = document.getElementById("CanvasBfilter").getContext("2d");
   var Bimg = new Image();
-  Bimg.src="m17_smallest_g.png";
+  Bimg.src="none_smallest_None.png";
   Bimg.onload = function() {
   ctxB.drawImage(Bimg,0,0,150,150);
   };
-  var BimgData = ctxB.getImageData(0,0,150,150);  
-
+  
   var ctxBig = document.getElementById("CanvasBig").getContext("2d");
   var BigImg = new Image();
+  var BigImgR = new Image();
+  var BigImgG = new Image();
+  var BigImgB = new Image();
+  
   BigImg.src="none_smaller_None.png";
+  BigImgR.src="none_smaller_None.png";
+  BigImgG.src="none_smaller_None.png";
+  BigImgB.src="none_smaller_None.png";
+  
   BigImg.onload = function() {
   ctxBig.drawImage(BigImg,0,0,500,500);
   };
 
-
+  
+  
   function changeColors(data,R,G,B) {
   for (var i = 0; i < data.length; i+=4) {
 		      data[i]=data[i]*(R/100);
@@ -380,50 +468,49 @@ table, th, td {
 		      
 		      }
   }
+
+		      
+  function changeColorsBig(data,dataR,dataG,dataB) {
+  for (var i = 0; i < data.length; i+=4) {
+		      data[i]=dataR[i];
+		      data[i+1]=dataG[i+1];
+		      data[i+2]=dataB[i+2];
+		      
+		      }
+  }
  
   function printDebugStuff() {
-  document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName;
+ 		      
+		      ctxR.drawImage(Rimg,0,0,150,150);
+		      var RimgData=ctxR.getImageData(0,0,150,150);
+		      ctxG.drawImage(Gimg,0,0,150,150);
+		      var GimgData=ctxG.getImageData(0,0,150,150);
+		      ctxB.drawImage(Bimg,0,0,150,150);
+		      var BimgData=ctxB.getImageData(0,0,150,150);		      
 
-  BigImg.src=psimage.imageName+"_smaller_g.png";
-  ctxBig.drawImage(BigImg,0,0,500,500);
-  
-//  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-//  ctxR.drawImage(Rimg,0,0,150,150);
-  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
-  ctxG.drawImage(Gimg,0,0,150,150);
+		      ctxBig.drawImage(BigImgR,0,0,500,500);
+		      var RBigData=ctxBig.getImageData(0,0,500,500);
+		      var BigData=ctxBig.getImageData(0,0,500,500);
+		      ctxBig.drawImage(BigImgG,0,0,500,500);
+		      var GBigData=ctxBig.getImageData(0,0,500,500);
+		      ctxBig.drawImage(BigImgB,0,0,500,500);
+		      var BBigData=ctxBig.getImageData(0,0,500,500);
 
-  var w= Rimg.width;
-  var h= Rimg.height;
+		      changeColors(RimgData.data,psimage.sliderValR.value*2,0,0);
+		      changeColors(GimgData.data,0,psimage.sliderValG.value*2,0);
+		      changeColors(BimgData.data,0,0,psimage.sliderValB.value*2);
+		      
+		      changeColors(RBigData.data,psimage.sliderValR.value*2,0,0);
+		      changeColors(GBigData.data,0,psimage.sliderValG.value*2,0);
+		      changeColors(BBigData.data,0,0,psimage.sliderValB.value*2);
+		      changeColorsBig(BigData.data,RBigData.data,GBigData.data,BBigData.data);
 
-//  var i;
-//  for (i=0; i< RimgData.data.length; i+=4){
-//RimgData.data[i]=(psimage.sliderValR.value-50)/100*RimgData.data[i];	       ///
-//	       RimgData.data[i+1]=0;
-//	       RimgData.data[i+2]=0;
-		 //	       }
-		 changeColors(RimgData.data,psimage.sliderValR.value,0,0);
-		 ctxR.putImageData(RimgData,0,0);
-		 //saving this here so I can see how it works
-		// changeColors(BimgData.data,0,0,psimage.sliderValB.value);
-		// ctxB.putImageData(BimgData,0,0);
-
-		 
-//		 var RimgDataCopy=new ImageData(
-//		 new Uint8ClampedArray(RimgData.data),
-//		 RimgData.width,
-//		 RimgData.height);
-
-
-
-
-
-	       
-//	       Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
-
-	       
-//  ctxB.drawImage(Bimg,0,0,150,150);
-	       
- document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName + " RimageData.length: "+ RimgData.data.length + "9:00";
+		      ctxBig.putImageData(BigData,0,0);
+		      ctxB.putImageData(BimgData,0,0);		      
+		      ctxR.putImageData(RimgData,0,0);
+		      ctxG.putImageData(GimgData,0,0);
+		      
+ //document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName + " RimageData.length: "+ RimgData.data.length + "9:00";
 
   }
   
