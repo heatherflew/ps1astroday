@@ -62,6 +62,7 @@ table, th, td {
   <tr>
     <th style="text-align:left;vertical-align:top;padding:0"> Step 1: Select a set of images
       <p>
+	<form name="imageForm">
 	<input type="radio" name="image" id="img1" value="m16" />
 	<label>M16</label>
 	<input type="radio" name="image" id="img2" value="horse" />
@@ -75,6 +76,7 @@ table, th, td {
 	<label>M20</label>
       <input type="radio" name="image" id="img6" value="m21" />
       <label>M21</label>
+      </form>
     </th>
     <th  style="text-align:left;vertical-align:top;padding:0">
       Step 2: Select a filter (grizy) for each channel (RGB)
@@ -187,7 +189,8 @@ table, th, td {
   sliderValB : 50,
   filterR : "None",
   filterG : "None",
-  filterB : "None"
+  filterB : "None",
+  state   : "changed"
   };
   
   psimage.sliderValR = document.getElementById("sliderR");
@@ -221,251 +224,218 @@ table, th, td {
   var im5 = document.getElementById("img5");
   var im6 = document.getElementById("img6");
 //  var im = document.getElementsByClassName("image");
-  // Display the default values:
-  outputR.innerHTML = psimage.sliderValR.value;
-  outputB.innerHTML = psimage.sliderValB.value;
-  outputG.innerHTML = psimage.sliderValG.value;
-
-  // Get the slider values when they are adjusted
-  
-  psimage.sliderValR.oninput = function() {
-  outputR.innerHTML = this.value;
-  printDebugStuff();
-  }
-
-  psimage.sliderValG.oninput = function() {
-  outputG.innerHTML = this.value;
-  printDebugStuff();
-  }
-
-  psimage.sliderValB.oninput = function() {
-  outputB.innerHTML = this.value;
-  printDebugStuff();
-  }
-
-  valRg.onclick = function() {
-  psimage.filterR= "g";
-  psimage.filterR= this.value;
-  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-  BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
-  printDebugStuff();
-  }
-  valRr.oninput = function() {
-  psimage.filterR= "r";
-  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-      BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
-  printDebugStuff();
-  }
-  valRi.oninput = function() {
-  psimage.filterR= "i";
-  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-      BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
-  printDebugStuff();
-  }
-  valRz.oninput = function() {
-  psimage.filterR= "z";
-  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-      BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
-  printDebugStuff();
-  }
-  valRy.oninput = function() {
-  psimage.filterR= "y";
-  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-      BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
-  printDebugStuff();
-  }
-  valRnone.oninput = function() {
-  psimage.filterR= "None";
-  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-    BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
-  printDebugStuff();
-  }
-
-    valBg.oninput = function() {
-  psimage.filterB= "g";
-  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
-    BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
-  printDebugStuff();
-  }
-  valBr.oninput = function() {
-  psimage.filterB= "r";
-  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
-    BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
-  printDebugStuff();
-  }
-  valBi.oninput = function() {
-  psimage.filterB= "i";
-  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
-    BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
-  printDebugStuff();
-  }
-  valBz.oninput = function() {
-  psimage.filterB= "z";
-  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
-    BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
-  printDebugStuff();
-  }
-  valBy.oninput = function() {
-  psimage.filterB= "y";
-  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
-  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
-  printDebugStuff();
-  }
-  valBnone.oninput = function() {
-  psimage.filterB= "None";
-  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
-  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
-  printDebugStuff();
-  }
-
-  valGg.oninput = function() {
-  psimage.filterG= "g";
-  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
-  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
-  printDebugStuff();
-  		      ctxBig.putImageData(BigData,0,0);
-		      ctxB.putImageData(BimgData,0,0);		      
-		      ctxR.putImageData(RimgData,0,0);
-		      ctxG.putImageData(GimgData,0,0);
-
-  }
-  valGr.oninput = function() {
-  psimage.filterG= "r";
-  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
-  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
-  printDebugStuff();
-  }
-  valGi.oninput = function() {
-  psimage.filterG= "i";
-  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
-  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
-  printDebugStuff();
-  }
-  valGz.oninput = function() {
-  psimage.filterG= "z";
-  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
-BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
-  printDebugStuff();
-  }
-  valGy.oninput = function() {
-  psimage.filterG= "y";
-  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
-  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
-  printDebugStuff();
-  }
-  valGnone.oninput = function() {
-  psimage.filterG= "None";
-  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
-  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
-  printDebugStuff();
-  }
-  
-  im1.onclick = function() {
-  psimage.imageName= this.value;
-  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
-  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
-  BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
-  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
-  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";  
-
-  printDebugStuff();
-  }
-  im2.onclick = function() {
-  psimage.imageName= this.value;
-  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
-  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
-    BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
-  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
-  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";  
-  printDebugStuff();
-  }
-    im3.onclick = function() {
-  psimage.imageName= this.value;
-    Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
-  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
-    BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
-  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
-  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";  
-  printDebugStuff();
-  }
-    im4.onclick = function() {
-  psimage.imageName= this.value;
-    Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
-  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
-    BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
-  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
-  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";  
-  printDebugStuff();
-  }
-    im5.onclick = function() {
-  psimage.imageName= this.value;
-  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
-  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
-    BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
-  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
-  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";  
-  printDebugStuff();
-  }
-    im6.onclick = function() {
-  psimage.imageName= this.value;
-  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
-  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
-  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
-  BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
-  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
-  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";  
-  printDebugStuff();
-  }
 
   var ctxR = document.getElementById("CanvasRfilter").getContext("2d");
   var Rimg = new Image();
   Rimg.src="none_smallest_None.png";
-  Rimg.onload = function() {
-  ctxR.drawImage(Rimg,0,0,150,150);
-  }
+  Rimg.onload = function() {ctxR.drawImage(Rimg,0,0,150,150);}
 
   var ctxG = document.getElementById("CanvasGfilter").getContext("2d");
   var Gimg = new Image();
   Gimg.src="none_smallest_None.png";
-  Gimg.onload = function() {
-  ctxG.drawImage(Gimg,0,0,150,150);
-
-  }
+  Gimg.onload = function() {ctxG.drawImage(Gimg,0,0,150,150);}
+  
   var ctxB = document.getElementById("CanvasBfilter").getContext("2d");
   var Bimg = new Image();
   Bimg.src="none_smallest_None.png";
-  Bimg.onload = function() {
-  ctxB.drawImage(Bimg,0,0,150,150);
-  };
+  Bimg.onload = function() {ctxB.drawImage(Bimg,0,0,150,150);}
   
   var ctxBig = document.getElementById("CanvasBig").getContext("2d");
   var BigImg = new Image();
   var BigImgR = new Image();
   var BigImgG = new Image();
   var BigImgB = new Image();
-  
+
   BigImg.src="none_smaller_None.png";
   BigImgR.src="none_smaller_None.png";
   BigImgG.src="none_smaller_None.png";
   BigImgB.src="none_smaller_None.png";
   
-  BigImg.onload = function() {
-  ctxBig.drawImage(BigImg,0,0,500,500);
-  };
+  BigImg.onload = function() {ctxBig.drawImage(BigImg,0,0,500,500);}
 
+  // Display the default values:
+  outputR.innerHTML = psimage.sliderValR.value;
+  outputB.innerHTML = psimage.sliderValB.value;
+  outputG.innerHTML = psimage.sliderValG.value;
   
+  // Get the slider values when they are adjusted
+  
+  psimage.sliderValR.oninput = function() {
+  outputR.innerHTML = this.value;
+  psimage.state='changed';
+  //  printDebugStuff();
+  }
+
+  psimage.sliderValG.oninput = function() {
+  outputG.innerHTML = this.value;  psimage.state="changed";
+//  printDebugStuff();
+  }
+
+  psimage.sliderValB.oninput = function() {
+  outputB.innerHTML = this.value;  psimage.state="changed";
+//  printDebugStuff();
+  }
+
+  valRg.onclick = function() {
+  psimage.filterR= "g";
+  psimage.filterR= this.value;   psimage.state="changed";
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+  BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
+//  printDebugStuff();
+  }
+  valRr.oninput = function() {
+  psimage.filterR= "r";   psimage.state="changed";
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+      BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
+//  printDebugStuff();
+  }
+  valRi.oninput = function() {
+  psimage.filterR= "i";
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+      BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
+//  printDebugStuff();
+  }
+  valRz.oninput = function() {
+  psimage.filterR= "z";
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+      BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
+//  printDebugStuff();
+  }
+  valRy.oninput = function() {
+  psimage.filterR= "y";
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+      BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
+//  printDebugStuff();
+  }
+  valRnone.oninput = function() {
+  psimage.filterR= "None";
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+    BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
+//  printDebugStuff();
+  }
+
+    valBg.oninput = function() {
+  psimage.filterB= "g";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+    BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
+//  printDebugStuff();
+  }
+  valBr.oninput = function() {
+  psimage.filterB= "r";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+    BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
+//  printDebugStuff();
+  }
+  valBi.oninput = function() {
+  psimage.filterB= "i";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+    BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
+//  printDebugStuff();
+  }
+  valBz.oninput = function() {
+  psimage.filterB= "z";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+    BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
+//  printDebugStuff();
+  }
+  valBy.oninput = function() {
+  psimage.filterB= "y";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";
+//  printDebugStuff();
+  }
+  valBnone.oninput = function() {
+  psimage.filterB= "None";
+  setImageNames();
+//  printDebugStuff();
+  }
+//var radios = document.forms["imageForm"].elements["myradio"];
+//for(var i = 0, max = radios.length; i < max; i++) {
+//    radios[i].onclick = function() {
+//        alert(this.value);
+//    }
+//}
+  valGg.oninput = function() {
+  psimage.filterG= "g";
+  setImageNames();
+//  printDebugStuff();
+  }
+  valGr.oninput = function() {
+  psimage.filterG= "r";
+  setImageNames();
+//  printDebugStuff();
+  }
+  valGi.oninput = function() {
+  psimage.filterG= "i";
+  setImageNames();
+//  printDebugStuff();
+  }
+  valGz.oninput = function() {
+  psimage.filterG= "z";
+  setImageNames();
+//  printDebugStuff();
+  }
+  valGy.oninput = function() {
+  psimage.filterG= "y";
+  setImageNames();
+//  printDebugStuff();
+  }
+  valGnone.oninput = function() {
+  psimage.filterG= "None";
+  setImageNames();
+//  printDebugStuff();
+  }
+  
+  im1.addEventListener("click", function() {
+  psimage.imageName= this.value;
+  setImageNames();
+//  printDebugStuff();
+  });
+  
+  im2.onclick = function() {
+  psimage.imageName= this.value;
+  setImageNames();
+//  printDebugStuff();
+  }
+  
+  im3.onclick = function() {
+  psimage.imageName= this.value;
+  setImageNames();
+//  printDebugStuff();
+  }
+    im4.onclick = function() {
+  psimage.imageName= this.value;
+  setImageNames();
+//  printDebugStuff();
+  }
+    im5.onclick = function() {
+  psimage.imageName= this.value;
+  setImageNames();
+  requestAnimationFrame(printDebugStuff);
+					  }
+					  
+  im6.onclick = function() {
+  psimage.imageName= this.value;
+  setImageNames();
+  }
+  requestAnimationFrame(printDebugStuff);
+					  //  printDebugStuff();
+
+  function setImageNames() {
+  Rimg.src=psimage.imageName+"_smallest_"+psimage.filterR+".png";
+  Gimg.src=psimage.imageName+"_smallest_"+psimage.filterG+".png";
+  Bimg.src=psimage.imageName+"_smallest_"+psimage.filterB+".png";
+  BigImgR.src=psimage.imageName+"_smaller_"+psimage.filterR+".png";
+  BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
+  BigImgB.src=psimage.imageName+"_smaller_"+psimage.filterB+".png";  
+
+  }
   
   function changeColors(data,R,G,B) {
   for (var i = 0; i < data.length; i+=4) {
 		      data[i]=data[i]*(R/100);
 		      data[i+1]=data[i+1]*(G/100);
 		      data[i+2]=data[i+2]*(B/100);
-		      
 		      }
   }
 
@@ -475,12 +445,16 @@ BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
 		      data[i]=dataR[i];
 		      data[i+1]=dataG[i+1];
 		      data[i+2]=dataB[i+2];
-		      
 		      }
   }
- 
-  function printDebugStuff() {
- 		      
+		      
+		      var time;
+
+  function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}	      
+  function printDebugStuff(timestamp) {
+
 		      ctxR.drawImage(Rimg,0,0,150,150);
 		      var RimgData=ctxR.getImageData(0,0,150,150);
 		      ctxG.drawImage(Gimg,0,0,150,150);
@@ -506,10 +480,13 @@ BigImgG.src=psimage.imageName+"_smaller_"+psimage.filterG+".png";
 		      changeColorsBig(BigData.data,RBigData.data,GBigData.data,BBigData.data);
 
 		      ctxBig.putImageData(BigData,0,0);
-		      ctxB.putImageData(BimgData,0,0);		      
+   		      ctxB.putImageData(BimgData,0,0);		      
 		      ctxR.putImageData(RimgData,0,0);
 		      ctxG.putImageData(GimgData,0,0);
-		      
+		      psimage.state='redrawn';
+		      sleep(20).then(() => { 
+					  requestAnimationFrame(printDebugStuff);
+					  });
  //document.getElementById("DebugOutput").innerHTML = "R: "+ psimage.sliderValR.value + " G: " + psimage.sliderValG.value + " B:" + psimage.sliderValB.value + " R_filter: " + psimage.filterR + " G_filter: " + psimage.filterG + " B_filter: " + psimage.filterB + " Image_name: " + psimage.imageName + " RimageData.length: "+ RimgData.data.length + "9:00";
 
   }
